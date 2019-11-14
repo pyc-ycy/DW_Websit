@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>测试</title>
+<style type="text/css">
+body,td,th {
+	font-family: "华文楷体", "楷体";
+	color: #270707;
+}
+body {
+}
+</style>
+</head>
+
+<body>
+<p>
+  <!DOCTYPE html>
+</p>
+<h1 cid="n0" mdtype="heading" contenteditable="true">Python类</h1>
+<h2 cid="n2" mdtype="heading" contenteditable="true">1、类的简析</h2>
+<pre spellcheck="false" lang="python" contenteditable="true" cid="n3" mdtype="fences">class Student(object):<br> &nbsp; &nbsp;def __init__(self,name,tell):<br> &nbsp; &nbsp; &nbsp; &nbsp;self.name = name<br> &nbsp; &nbsp; &nbsp; &nbsp;self.tell = tell<br>    def print_tell(self):<br> &nbsp; &nbsp; &nbsp; &nbsp;print('%s:%s'%(self.name,self.tell))</pre>
+<ul cid="n4" mdtype="list" data-mark="*">
+  <li cid="n5" mdtype="list_item">
+    <p cid="n6" mdtype="paragraph">类是面向对象的一个抽象概念</p>
+  </li>
+</ul>
+<h2 cid="n7" mdtype="heading" contenteditable="true">2、类的定义</h2>
+<pre spellcheck="false" lang="python" contenteditable="true" cid="n8" mdtype="fences">class 类名(object): &nbsp; &nbsp;#括号里写的是父类名字，由于所有的类都object类的子类，所以当一个自定义类无直接父类时，括号里写上object,不同于C++，Python没有所谓的继承方式<br> &nbsp; &nbsp;…… &nbsp;#方法体<br> &nbsp; &nbsp;def funct(self) &nbsp;#类中的函数，即类的方法默认第一个参数必须是self</pre>
+<ul cid="n9" mdtype="list" data-mark="*">
+  <li cid="n10" mdtype="list_item">
+    <p cid="n11" mdtype="paragraph">类的调用方式</p>
+    <pre spellcheck="false" lang="python" cid="n12" mdtype="fences">变量名 = 类名()<br>变量名.所调用类的方法名(参数表)</pre>
+  </li>
+  <li cid="n13" mdtype="list_item">
+    <p cid="n14" mdtype="paragraph">累可以起到模板的作用，因此可以在创建实例的时候把一些我们认为必须绑定的属性强制填写进去，通过&ldquo;init&rdquo;方法，例如文档开头的类。此时的调用形式：</p>
+    <pre spellcheck="false" lang="python" cid="n15" mdtype="fences">a=Student("******","######")<br>a.print_tell()</pre>
+  </li>
+  <li cid="n16" mdtype="list_item">
+    <p cid="n17" mdtype="paragraph">如果不采用上述形式，仍旧是变量名 = 类名()，就会报错。</p>
+    <pre spellcheck="false" lang="python" cid="n18" mdtype="fences">TypeError: __init__() missing 2 required positional arguments: 'name' and 'tell'</pre>
+  </li>
+</ul>
+<h2 cid="n19" mdtype="heading" contenteditable="true">3、私有变量和私有方法</h2>
+<ul cid="n20" mdtype="list" data-mark="*">
+  <li cid="n21" mdtype="list_item">
+    <p cid="n22" mdtype="paragraph">私有变量和私有方法通过在变量名和方法名前面加上&ldquo;__",两个段横杠来实现，一旦定义为私有变量和私有方法，便无法在类体外访问。</p>
+    <pre spellcheck="false" lang="python" cid="n23" mdtype="fences">class PubAndPri:<br>    pub = "这是共有变量"<br>    __pri="这是私有变量"<br>    def __init__(self):<br>        self.other = "公有变量也可以这样定义"<br>    def out_pub(self):<br>        print("公有方法",self.pub,self.__pri)<br>    def __out_pri(self):<br>        print("这是私有方法",self.pub,self.__pri)<br>​<br>pp=PubAndPri()<br>pp.out_pub()<br>print(pp.pub,pp.other)<br>try:<br>    pp.__out_pri()<br>except Exception as e:<br>    print("调用私有方法错误！")</pre>
+  </li>
+</ul>
+<h2 cid="n24" mdtype="heading" contenteditable="true">4、总结</h2>
+<h3 cid="n25" mdtype="heading" contenteditable="true">1、测试变量类型：type（变量名）</h3>
+<h3 cid="n26" mdtype="heading" contenteditable="true">2、转换变量类型：</h3>
+<pre spellcheck="false" lang="" contenteditable="true" cid="n27" mdtype="fences">####    a、str(变量)  #将变量转换为str型<br>​<br>    ####    b、int(变量) &nbsp; #将变量转换为int型</pre>
+<h4 cid="n28" mdtype="heading" contenteditable="true">c、查询已安装的模块：heip('modules')</h4>
+<pre spellcheck="false" lang="python" contenteditable="true" cid="n29" mdtype="fences">hlep(list)</pre>
+<h4 cid="n30" mdtype="heading" contenteditable="true">d、查询相关命令的属性和方法用dir()</h4>
+<h4 cid="n31" mdtype="heading" contenteditable="true">e、查询两个变量储存地址是否一致，用id()</h4>
+<h4 cid="n32" mdtype="heading" contenteditable="true">f、查询字符的ASII码（十进制），用ord('字符')</h4>
+<pre spellcheck="false" lang="python" contenteditable="true" cid="n33" mdtype="fences">&gt;&gt;&gt; ord('A')<br>65</pre>
+<p cid="n34" mdtype="paragraph" contenteditable="true"> 反过来，查询十进制数所对应的ASII码字符可用chr(int)</p>
+<pre spellcheck="false" lang="python" contenteditable="true" cid="n35" mdtype="fences">&gt;&gt;&gt; chr(90)<br>'Z'</pre>
+<h4 cid="n36" mdtype="heading" contenteditable="true">字符串操作</h4>
+<ul cid="n37" mdtype="list" data-mark="*">
+  <li cid="n38" mdtype="list_item">
+    <p cid="n39" mdtype="paragraph">str.split可以将字符型转换成list</p>
+    <pre spellcheck="false" lang="python" cid="n40" mdtype="fences">&gt;&gt;&gt; s = "I love python,and\nyou?\thehe"<br>&gt;&gt;&gt; print(s)<br>I love python,and<br>you?    hehe<br>&gt;&gt;&gt; s.split(",")<br>['I love python', 'and\nyou?\thehe']</pre>
+  </li>
+  <li cid="n41" mdtype="list_item">
+    <p cid="n42" mdtype="paragraph">字符串检测开头和结尾，可以用：</p>
+    <pre spellcheck="false" lang="python" cid="n43" mdtype="fences">string.endswith('str')、string.startswith('str')<br>file = "F:\\data\\catering_dish.xls"<br>&gt;&gt;&gt; file.endswith('xls')<br>True<br>&gt;&gt;&gt; url = "https://www.i-nuc.com"<br>&gt;&gt;&gt; url.startswith('https')<br>True</pre>
+  </li>
+  <li cid="n44" mdtype="list_item">
+    <p cid="n45" mdtype="paragraph">要将字符串中的某个字符替换掉可以使用replace(被查找词，替换词)</p>
+    <pre spellcheck="false" lang="python" cid="n46" mdtype="fences">&gt;&gt;&gt; s='I love python, do you love python too?'<br>&gt;&gt;&gt; s.replace('python','R')<br>'I love R, do you love R too?'<br>&gt;&gt;&gt;s.replace('python','C++',1)<br>'I love C++, do you love python too?'</pre>
+  </li>
+  <li cid="n47" mdtype="list_item">
+    <p cid="n48" mdtype="paragraph">re.sub(被替词，替换词，替换域，flags=re.IGNORECASE)这条语句用于查找与替换，忽略大小写</p>
+    <pre spellcheck="false" lang="python" cid="n49" mdtype="fences">&gt;&gt;&gt; S = 'I love python,do you love Python'<br>&gt;&gt;&gt; re.sub('python','C++',S,flags=re.IGNORECASE)<br>'I love C++,do you love C++'</pre>
+    <pre spellcheck="false" lang="python" cid="n50" mdtype="fences">IDLE编辑器快捷键<br>自动补全代码 &nbsp; &nbsp; &nbsp; &nbsp;Alt+/（查找编辑器内已经写过的代码来补全)<br>补全提示 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+Shift+space(默认与输入法冲突，修改之)<br>(方法：Options-&gt;configure IDLE…-&gt;Keys-&gt; force-open-completions<br>提示的时候只要按空格就出来对于的，否则翻上下键不需要按其他键自动就补全了)<br>windows下的是Ctrl+Alt+Space<br>后退 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+Z<br>​<br>重做 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+Shift+Z<br>加缩进 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Ctrl+]<br>减缩进 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Ctrl+[<br>加注释 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Alt+3<br>去注释 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Alt+4<br>​<br>Python Shell快捷键<br>​<br>自动补全同上<br>上一条命令 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Alt+P<br>下一条命令 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Alt+N</pre>
+  </li>
+</ul>
+<ul cid="n52" mdtype="list" data-mark="*">
+  <li cid="n53" mdtype="list_item">
+    <p cid="n54" mdtype="paragraph">关于备份，当处理数据时需要备份数据时，不可以简单地直接用&ldquo;a=b",应该用&rdquo;b=a[:]"和copy（）。</p>
+    <pre spellcheck="false" lang="python" cid="n55" mdtype="fences">&gt;&gt;&gt; a=[3,2,5,4,9,8,1]<br>&gt;&gt;&gt; id(a)<br>49461408<br>&gt;&gt;&gt; c=a<br>&gt;&gt;&gt; id(c)<br>49461408<br>&gt;&gt;&gt; b=a[:]<br>&gt;&gt;&gt; id(b)<br>60696496<br>&gt;&gt;&gt; d=a.copy()<br>&gt;&gt;&gt; id(d)<br>60696816</pre>
+  </li>
+  <li cid="n56" mdtype="list_item">
+    <p cid="n57" mdtype="paragraph">关于下划线&ldquo;—&rdquo;。</p>
+    <p cid="n58" mdtype="paragraph">下划线对解释器有特殊含义，而且是内建标识符所使用的符号，故一般不应该用想下划线作变量名的开头，如_xxx会被看做&ldquo;私有的&rdquo;，\\   __xxx代表私有成员，而变量名前后都有双下划线多Python具有特殊含义。总而言之不可以随意使用下划线开头命名变量。</p>
+  </li>
+</ul>
+</body>
+</html>
